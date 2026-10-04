@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автошкола DriveSchool.kz — Обучение вождению</title>
+    <meta name="description" content="Автошкола DriveSchool.kz: профессиональное обучение вождению на категорию B. Высокий процент сдачи экзамена с первого раза, современные автомобили и опытные инструкторы.">
+
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ========================================================================== -->
+    <!-- ЕДИНЫЕ СТИЛИ (CSS)                                                         -->
+    <!-- ========================================================================== -->
+    <style>
+        :root {
+            --primary: #1d4ed8;
+            --primary-hover: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-bg: #eff6ff;
+            --dark: #0f172a;
+            --dark-muted: #334155;
+            --text: #475569;
+            --text-light: #94a3b8;
+            --bg-white: #ffffff;
+            --bg-light: #f8fafc;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --whatsapp: #25d366;
+            --whatsapp-hover: #128c7e;
+            --instagram: #e1306c;
+
+            --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 4px 20px -2px rgba(29, 78, 216, 0.08);
+            --shadow-lg: 0 12px 30px -4px rgba(29, 78, 216, 0.12);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-main); color: var(--text); background-color: var(--bg-white); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+        button, input, select { font-family: inherit; outline: none; }
+
+        .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 90px 0; }
+        .bg-light { background-color: var(--bg-light); }
+        .text-center { text-align: center; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header { margin-bottom: 50px; }
+        .section-subtitle {
+            display: inline-block; color: var(--primary); font-weight: 700; font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;
+            background: var(--primary-bg); padding: 6px 16px; border-radius: var(--radius-full);
+        }
+        .section-title { font-size: 2.25rem; font-weight: 800; color: var(--dark); line-height: 1.25; margin-bottom: 12px; }
+        .section-description { font-size: 1.1rem; color: var(--text); max-width: 640px; margin: 0 auto; }
+
+        /* Buttons */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; border-radius: var(--radius-md); cursor: pointer; transition: var(--transition); border: 2px solid transparent; }
+        .btn--primary { background-color: var(--primary); color: var(--bg-white); box-shadow: 0 4px 14px rgba(29, 78, 216, 0.35); }
+        .btn--primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(29, 78, 216, 0.45); }
+        .btn--outline { background-color: transparent; color: var(--primary); border-color: var(--primary); }
+        .btn--outline:hover { background-color: var(--primary-bg); transform: translateY(-2px); }
+        .btn--whatsapp { background-color: var(--whatsapp); color: #ffffff; border-color: var(--whatsapp); box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3); }
+        .btn--whatsapp:hover { background-color: var(--whatsapp-hover); border-color: var(--whatsapp-hover); transform: translateY(-2px); }
+        .btn--sm { padding: 8px 18px; font-size: 0.9rem; }
+        .btn--lg { padding: 16px 32px; font-size: 1.05rem; }
+        .btn--full { width: 100%; }
+
+        /* Header */
+        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: rgba(255, 255, 255, 0.94); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226, 232, 240, 0.8); transition: var(--transition); }
+        .header__container { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 1.5rem; font-weight: 800; color: var(--dark); }
+        .logo__img { height: 48px; width: 48px; object-fit: contain; border-radius: var(--radius-full); }
+        .logo__accent { color: var(--primary); }
+        .nav__list { display: flex; align-items: center; gap: 30px; }
+        .nav__link { font-weight: 600; font-size: 0.95rem; color: var(--dark-muted); position: relative; padding: 6px 0; }
+        .nav__link:hover, .nav__link.active { color: var(--primary); }
+        .nav__link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px; background-color: var(--primary); transition: var(--transition); border-radius: 2px; }
+        .nav__link:hover::after, .nav__link.active::after { width: 100%; }
+        .header__actions { display: flex; align-items: center; gap: 16px; }
+        .header__phone { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--dark); font-size: 0.95rem; }
+        .header__phone i { color: var(--primary); }
+
+        .burger { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 20px; background: transparent; border: none; cursor: pointer; z-index: 1001; }
+        .burger span { width: 100%; height: 3px; background-color: var(--dark); border-radius: 3px; transition: var(--transition); }
+
+        /* Hero */
+        .hero { padding-top: 150px; padding-bottom: 90px; background: radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 60%); }
+        .hero__container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .badge { display: inline-flex; align-items: center; gap: 8px; background-color: var(--primary-bg); color: var(--primary); padding: 8px 16px; border-radius: var(--radius-full); font-size: 0.9rem; font-weight: 700; margin-bottom: 20px; border: 1px solid rgba(59, 130, 246, 0.2); }
+        .badge__icon { color: #ef4444; }
+        .hero__title { font-size: 3.25rem; font-weight: 800; color: var(--dark); line-height: 1.15; margin-bottom: 20px; letter-spacing: -0.5px; }
+        .hero__subtitle { font-size: 1.2rem; color: var(--text); margin-bottom: 35px; max-width: 540px; }
+        .hero__btns { display: flex; align-items: center; gap: 16px; margin-bottom: 45px; flex-wrap: wrap; }
+        .hero__stats { display: flex; align-items: center; gap: 24px; padding-top: 25px; border-top: 1px solid var(--border); }
+        .stat-item { display: flex; flex-direction: column; }
+        .stat-item__number { font-size: 1.75rem; font-weight: 800; color: var(--primary); }
+        .stat-item__label { font-size: 0.85rem; color: var(--text-light); font-weight: 500; }
+        .stat-divider { width: 1px; height: 40px; background-color: var(--border); }
+
+        .hero__image-wrapper { position: relative; display: flex; justify-content: center; }
+        .hero__image { width: 100%; max-height: 480px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
+        .hero__card { position: absolute; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 16px 20px; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); border: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+        .hero__card--top { top: -20px; left: -20px; }
+        .hero__card--top i { font-size: 1.8rem; color: var(--primary); }
+        .hero__card--top strong { display: block; color: var(--dark); font-size: 0.95rem; }
+        .hero__card--top span { font-size: 0.8rem; color: var(--text); }
+        .hero__card--bottom { bottom: -20px; right: -20px; flex-direction: column; align-items: flex-start; gap: 4px; }
+        .rating-stars { color: #f59e0b; font-size: 0.85rem; }
+
+        /* Features */
+        .features__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .feature-card { background: var(--bg-white); padding: 30px 24px; border-radius: var(--radius-md); border: 1px solid var(--border); transition: var(--transition); }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--primary-light); }
+        .feature-card__icon { width: 54px; height: 54px; background-color: var(--primary-bg); color: var(--primary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; }
+        .feature-card__title { font-size: 1.15rem; color: var(--dark); font-weight: 700; margin-bottom: 10px; }
+        .feature-card__text { font-size: 0.95rem; color: var(--text); }
+
+        /* Fleet & Instructors */
+        .filter-buttons { display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; }
+        .filter-btn { padding: 10px 22px; border-radius: var(--radius-full); border: 1px solid var(--border); background-color: var(--bg-white); color: var(--dark-muted); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: var(--transition); }
+        .filter-btn:hover, .filter-btn.active { background-color: var(--primary); color: var(--bg-white); border-color: var(--primary); }
+
+        .fleet__grid, .instructors__grid, .pricing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .car-card, .instructor-card, .price-card { background: var(--bg-white); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); transition: var(--transition); }
+        .car-card:hover, .instructor-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+        .car-card__image-container, .instructor-card__image-wrapper { position: relative; height: 240px; background-color: #f1f5f9; overflow: hidden; }
+        .car-card__image, .instructor-card__image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .car-card:hover .car-card__image { transform: scale(1.05); }
+
+        .car-card__badge { position: absolute; top: 14px; right: 14px; padding: 6px 14px; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 800; color: var(--bg-white); }
+        .badge--akpp { background-color: #2563eb; }
+        .badge--mkpp { background-color: #059669; }
+
+        .car-card__body, .instructor-card__info { padding: 24px; }
+        .car-card__title, .instructor-card__name { font-size: 1.3rem; color: var(--dark); font-weight: 700; margin-bottom: 12px; }
+        .car-card__desc { font-size: 0.92rem; color: var(--text); margin: 0 0 16px; line-height: 1.6; }
+        .car-card__specs { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+        .spec-item { font-size: 0.9rem; color: var(--text); display: flex; align-items: center; gap: 10px; }
+        .spec-item i { color: var(--primary); width: 16px; }
+
+        .cabinet { background: linear-gradient(135deg, rgba(59, 130, 246, 0.04), rgba(16, 185, 129, 0.04)); }
+        .cabinet__grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: stretch; }
+        .cabinet__panel, .cabinet__side-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+        .cabinet__panel { padding: 30px; }
+        .cabinet__profile { display: flex; align-items: center; gap: 18px; margin-bottom: 24px; }
+        .cabinet__avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-light)); display: flex; align-items: center; justify-content: center; font-size: 1.65rem; color: var(--bg-white); font-weight: 800; }
+        .cabinet__name { font-size: 1.5rem; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+        .cabinet__meta { color: var(--text); font-size: 0.92rem; }
+        .cabinet__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .cabinet__stat { background: var(--bg-light); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px 16px; }
+        .cabinet__value { display: block; font-size: 1.6rem; font-weight: 800; color: var(--primary); margin-bottom: 6px; }
+        .cabinet__label { font-size: 0.82rem; color: var(--text); }
+        .cabinet__list { margin-top: 24px; display: grid; gap: 12px; }
+        .cabinet__item { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--bg-light); }
+        .cabinet__item strong { color: var(--dark); font-size: 0.95rem; }
+        .cabinet__item span { color: var(--text); font-size: 0.88rem; }
+        .cabinet__status { display: inline-flex; align-items: center; gap: 8px; color: var(--success); font-weight: 700; }
+        .cabinet__status::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
+        .cabinet__side-card { padding: 22px; }
+        .cabinet__side-card + .cabinet__side-card { margin-top: 18px; }
+        .cabinet__side-title { font-size: 1rem; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+        .cabinet__side-list { display: grid; gap: 10px; }
+        .cabinet__side-list li { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: var(--bg-light); border: 1px solid var(--border); border-radius: 10px; font-size: 0.86rem; }
+        .cabinet__side-list span { color: var(--text); }
+        .cabinet__side-list strong { color: var(--dark); }
+
+        .instructor-card__experience { position: absolute; bottom: 14px; left: 14px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); color: var(--bg-white); padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600; }
+        .instructor-card__role { display: block; color: var(--primary); font-weight: 600; font-size: 0.9rem; margin-bottom: 12px; }
+        .instructor-card__desc { font-size: 0.95rem; color: var(--text); margin-bottom: 16px; }
+        .instructor-card__rating { font-size: 0.85rem; color: var(--dark); font-weight: 700; display: flex; align-items: center; gap: 6px; }
+        .instructor-card__rating i { color: #f59e0b; }
+
+        /* Pricing */
+        .price-card { padding: 36px 30px; position: relative; display: flex; flex-direction: column; justify-content: space-between; }
+        .price-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        .price-card--popular { border: 2px solid var(--primary); box-shadow: var(--shadow-lg); padding-top: 48px; }
+        .popular-badge { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: var(--bg-white); padding: 6px 18px; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; box-shadow: 0 4px 10px rgba(29, 78, 216, 0.25); }
+        .price-card__title { font-size: 1.4rem; color: var(--dark); font-weight: 700; margin-bottom: 10px; }
+        .price-card__amount { font-size: 2.3rem; font-weight: 800; color: var(--primary); line-height: 1.1; margin-bottom: 6px; }
+        .price-unit { font-size: 0.95rem; color: var(--text-light); font-weight: 500; }
+        .price-card__sub { display: block; font-size: 0.85rem; color: var(--text-light); margin-bottom: 24px; }
+        .price-card__list { margin-bottom: 30px; display: flex; flex-direction: column; gap: 12px; }
+        .price-card__list li { font-size: 0.95rem; color: var(--text); display: flex; align-items: center; gap: 10px; }
+        .price-card__list i { color: var(--success); }
+
+        /* 2GIS Container Card */
+        .gis-widget-wrapper { margin-bottom: 0; }
+        .gis-card { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: var(--radius-lg); padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gis-card__badge-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .gis-card__title { font-size: 1.25rem; font-weight: 800; color: #ffffff; margin-bottom: 4px; }
+        .gis-card__sub { font-size: 0.88rem; color: #94a3b8; }
+        .gis-card__widget-box { display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.05); padding: 10px 16px; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.1); }
+
+        /* Footer */
+        .footer { background-color: var(--dark); color: #cbd5e1; padding-top: 80px; }
+        .footer__container { display: grid; grid-template-columns: 2fr 2fr 1fr; gap: 50px; margin-bottom: 60px; }
+        .logo--footer { color: var(--bg-white); margin-bottom: 16px; }
+        .logo__img--footer { filter: brightness(1.2); }
+        .footer__desc { font-size: 0.9rem; color: #94a3b8; margin-bottom: 20px; max-width: 320px; }
+        .social-links { display: flex; gap: 12px; }
+        .social-link { width: 38px; height: 38px; background: rgba(255, 255, 255, 0.08); color: var(--bg-white); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+        .social-link:hover { background: var(--primary); transform: translateY(-3px); }
+        .social-link--wa { background: var(--whatsapp); }
+        .social-link--wa:hover { background: var(--whatsapp-hover); }
+        .social-link--insta { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .social-link--insta:hover { transform: translateY(-3px) scale(1.08); box-shadow: 0 4px 12px rgba(225, 48, 108, 0.4); }
+        .footer__title { color: var(--bg-white); font-size: 1.15rem; font-weight: 700; margin-bottom: 20px; }
+        .contacts-list { display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; }
+        .contacts-list li { display: flex; align-items: flex-start; gap: 12px; }
+        .contacts-list i { color: var(--primary-light); margin-top: 4px; }
+        .contacts-list i.fa-whatsapp { color: var(--whatsapp); }
+        .contacts-list i.fa-instagram { color: var(--instagram); }
+        .contacts-list a:hover { color: var(--bg-white); }
+        .footer__links ul { display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; }
+        .footer__links a:hover { color: var(--bg-white); padding-left: 4px; }
+        .footer__bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 24px 0; font-size: 0.85rem; color: #94a3b8; }
+        .footer__bottom-container { display: flex; align-items: center; justify-content: space-between; }
+        .privacy-link:hover { color: var(--bg-white); }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero__title { font-size: 2.6rem; }
+            .features__grid, .pricing__grid, .fleet__grid, .instructors__grid { grid-template-columns: repeat(2, 1fr); }
+            .footer__container { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 60px 0; }
+            .burger { display: flex; }
+            .nav { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); background-color: var(--bg-white); padding: 40px; transition: var(--transition); box-shadow: var(--shadow-lg); }
+            .nav.active { left: 0; }
+            .nav__list { flex-direction: column; align-items: flex-start; gap: 24px; }
+            .nav__link { font-size: 1.2rem; }
+            .header__phone span { display: none; }
+            .hero { padding-top: 120px; }
+            .hero__container { grid-template-columns: 1fr; gap: 40px; }
+            .hero__title { font-size: 2.2rem; }
+            .hero__card--top, .hero__card--bottom { display: none; }
+            .features__grid, .fleet__grid, .instructors__grid, .pricing__grid, .footer__container { grid-template-columns: 1fr; }
+            .price-card--popular { padding-top: 48px; }
+            .gis-card { flex-direction: column; text-align: center; padding: 20px; }
+            .footer__bottom-container { flex-direction: column; gap: 10px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header class="header" id="header">
+        <div class="container header__container">
+            <a href="#hero" class="logo">
+                <img src="logo.png" alt="DriveSchool.kz Логотип" class="logo__img">
+                <span class="logo__text">DriveSchool<span class="logo__accent">.kz</span></span>
+            </a>
+
+            <nav class="nav" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#hero" class="nav__link active">Главная</a></li>
+                    <li class="nav__item"><a href="#cabinet" class="nav__link">Личный кабинет</a></li>
+                    <li class="nav__item"><a href="#fleet" class="nav__link">Автопарк</a></li>
+                    <li class="nav__item"><a href="#instructors" class="nav__link">Инструкторы</a></li>
+                    <li class="nav__item"><a href="#pricing" class="nav__link">Тарифы</a></li>
+                    <li class="nav__item"><a href="#reviews" class="nav__link">Отзывы</a></li>
+                    <li class="nav__item"><a href="#contacts" class="nav__link">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <div class="header__actions">
+                <a href="tel:+77774414888" class="header__phone">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+7 (777) 441-48-88</span>
+                </a>
+                <a href="https://wa.me/77774414888" target="_blank" rel="noopener" class="btn btn--whatsapp btn--sm">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <button class="burger" id="burger-toggle" aria-label="Открыть меню">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="container hero__container">
+                <div class="hero__content">
+                    <div class="badge">
+                        <i class="fa-solid fa-fire badge__icon"></i> Набор в новые группы открыт
+                    </div>
+                    <h1 class="hero__title">
+                        Научим водить <span class="text-gradient">уверенно</span> и <span class="text-gradient">безопасно</span>
+                    </h1>
+                    <p class="hero__subtitle">
+                        Обучение вождению категории B на автоматической и механической коробках передач. Подготовка к сдаче экзамена в ЦОНе с первого раза!
+                    </p>
+                    <div class="hero__btns">
+                        <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20записаться%20на%20курс%20в%20DriveSchool.kz" target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Записаться через WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <div class="hero__stats">
+                        <div class="stat-item">
+                            <span class="stat-item__number">98%</span>
+                            <span class="stat-item__label">Сдача с первого раза</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-item__number">12+</span>
+                            <span class="stat-item__label">Лет успешного опыта</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-item__number">5 000+</span>
+                            <span class="stat-item__label">Выпускников с правами</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero__image-wrapper">
+                    <div class="hero__card hero__card--top">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <div>
+                            <strong>100% Безопасность</strong>
+                            <span>Двойные педали на всех авто</span>
+                        </div>
+                    </div>
+                    <img src="placeholder-hero.jpg" alt="Обучение вождению в DriveSchool.kz" class="hero__image" onerror="this.src='https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80'">
+                    <div class="hero__card hero__card--bottom">
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <strong>4.9 из 5.0</strong>
+                        <span>Рейтинг на основе отзывов</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ПРЕИМУЩЕСТВА -->
+        <section class="features section bg-light">
+            <div class="container">
+                <div class="features__grid">
+                    <div class="feature-card">
+                        <div class="feature-card__icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <h3 class="feature-card__title">Удобное время</h3>
+                        <p class="feature-card__text">Утренние, дневные и вечерние группы с 09:00 до 18:00 (Пн - Пт).</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon"><i class="fa-solid fa-credit-card"></i></div>
+                        <h3 class="feature-card__title">Рассрочка 0%</h3>
+                        <p class="feature-card__text">Оплата частями без переплат и скрытых комиссий на весь период.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon"><i class="fa-solid fa-route"></i></div>
+                        <h3 class="feature-card__title">Маршруты ЦОН</h3>
+                        <p class="feature-card__text">Отработка реальных экзаменационных автодромов и городских маршрутов.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon"><i class="fa-solid fa-user-shield"></i></div>
+                        <h3 class="feature-card__title">Терпеливые инструкторы</h3>
+                        <p class="feature-card__text">Вежливые специалисты со стажем преподавания от 7 лет.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ЛИЧНЫЙ КАБИНЕТ -->
+        <section class="cabinet section" id="cabinet">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Личный кабинет</span>
+                    <h2 class="section-title">Удобный контроль обучения</h2>
+                    <p class="section-description">Отслеживайте прогресс, занятия, оплату и расписание без лишних звонков.</p>
+                </div>
+
+                <div class="cabinet__grid">
+                    <div class="cabinet__panel">
+                        <div class="cabinet__profile">
+                            <div class="cabinet__avatar">А</div>
+                            <div>
+                                <div class="cabinet__name">Алибек Нурланов</div>
+                                <div class="cabinet__meta">Студент • Группа B-214</div>
+                            </div>
+                        </div>
+
+                        <div class="cabinet__stats">
+                            <div class="cabinet__stat">
+                                <span class="cabinet__value">24</span>
+                                <span class="cabinet__label">занятия</span>
+                            </div>
+                            <div class="cabinet__stat">
+                                <span class="cabinet__value">8</span>
+                                <span class="cabinet__label">часов в неделю</span>
+                            </div>
+                            <div class="cabinet__stat">
+                                <span class="cabinet__value">92%</span>
+                                <span class="cabinet__label">успеваемость</span>
+                            </div>
+                        </div>
+
+                        <div class="cabinet__list">
+                            <div class="cabinet__item">
+                                <strong>Следующее занятие</strong>
+                                <span>Сегодня, 18:30 • Автодром</span>
+                            </div>
+                            <div class="cabinet__item">
+                                <strong>Инструктор</strong>
+                                <span>Миша Кузнецов</span>
+                            </div>
+                            <div class="cabinet__item">
+                                <strong>Статус оплаты</strong>
+                                <span class="cabinet__status">Оплачено</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="cabinet__side-card">
+                            <div class="cabinet__side-title">Прогресс обучения</div>
+                            <ul class="cabinet__side-list">
+                                <li><span>Теория</span><strong>18/20</strong></li>
+                                <li><span>Город</span><strong>12/15</strong></li>
+                                <li><span>Парковка</span><strong>9/10</strong></li>
+                            </ul>
+                        </div>
+                        <div class="cabinet__side-card">
+                            <div class="cabinet__side-title">Следующие шаги</div>
+                            <ul class="cabinet__side-list">
+                                <li><span>Сдача экзамена</span><strong>в 2 недели</strong></li>
+                                <li><span>Документы</span><strong>Готово</strong></li>
+                                <li><span>Поддержка</span><strong>WhatsApp</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- АВТОПАРК -->
+        <section class="fleet section" id="fleet">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Современный транспорт</span>
+                    <h2 class="section-title">Наш автопарк</h2>
+                    <p class="section-description">Все автомобили проходят регулярное ТО, оснащены дублирующими педалями и кондиционерами.</p>
+                </div>
+
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Все авто</button>
+                    <button class="filter-btn" data-filter="akpp">АКПП (Автомат)</button>
+                    <button class="filter-btn" data-filter="mkpp">МКПП (Механика)</button>
+                </div>
+
+                <div class="fleet__grid">
+                    <div class="car-card" data-category="akpp">
+                        <div class="car-card__image-container">
+                            <span class="car-card__badge badge--akpp">АКПП</span>
+                            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80" alt="Hyundai Accent 2023" class="car-card__image" onerror="this.src='https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=600&q=80'">
+                        </div>
+                        <div class="car-card__body">
+                            <h3 class="car-card__title">Hyundai Accent (2023)</h3>
+                            <p class="car-card__desc">Удобный и спокойный седан для первых уроков. Лёгкое управление, комфортная посадка и стабильная работа в городском потоке.</p>
+                            <div class="car-card__specs">
+                                <div class="spec-item"><i class="fa-solid fa-gear"></i> Коробка: <strong>Автомат (АКПП)</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-snowflake"></i> Климат-контроль: <strong>Есть</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-circle-check"></i> Дублирующие педали: <strong>Да</strong></div>
+                            </div>
+                            <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20обучаться%20на%20Hyundai%20Accent%20АКПП" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span>Выбрать на WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="car-card" data-category="mkpp">
+                        <div class="car-card__image-container">
+                            <span class="car-card__badge badge--mkpp">МКПП</span>
+                            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80" alt="Kia Rio 2022" class="car-card__image" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80'">
+                        </div>
+                        <div class="car-card__body">
+                            <h3 class="car-card__title">Kia Rio (2022)</h3>
+                            <p class="car-card__desc">Мощный и экономичный автомобиль с хорошей манёвренностью. Подходит для отработки поворотов, парковки и сложных участков маршрута.</p>
+                            <div class="car-card__specs">
+                                <div class="spec-item"><i class="fa-solid fa-gear"></i> Коробка: <strong>Механика (МКПП)</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-snowflake"></i> Кондиционер: <strong>Есть</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-circle-check"></i> Дублирующие педали: <strong>Да</strong></div>
+                            </div>
+                            <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20обучаться%20на%20Kia%20Rio%20МКПП" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span>Выбрать на WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="car-card" data-category="akpp">
+                        <div class="car-card__image-container">
+                            <span class="car-card__badge badge--akpp">АКПП</span>
+                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Toyota Corolla 2023" class="car-card__image" onerror="this.src='https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=600&q=80'">
+                        </div>
+                        <div class="car-card__body">
+                            <h3 class="car-card__title">Toyota Corolla (2023)</h3>
+                            <p class="car-card__desc">Комфортный и безопасный седан с отличной обзорностью. Идеален для уверенного обучения и подготовки к экзамену.</p>
+                            <div class="car-card__specs">
+                                <div class="spec-item"><i class="fa-solid fa-gear"></i> Коробка: <strong>Автомат (АКПП)</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-snowflake"></i> Климат-контроль: <strong>Есть</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-circle-check"></i> Дублирующие педали: <strong>Да</strong></div>
+                            </div>
+                            <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20обучаться%20на%20Toyota%20Corolla%20АКПП" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span>Выбрать на WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ИНСТРУКТОРЫ -->
+        <section class="instructors section bg-light" id="instructors">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Профессионалы своего дела</span>
+                    <h2 class="section-title">Опытные инструкторы</h2>
+                    <p class="section-description">Наши наставники найдут подход к каждому ученику и научат действовать спокойно в любых ситуациях.</p>
+                </div>
+
+                <div class="instructors__grid">
+                    <div class="instructor-card">
+                        <div class="instructor-card__image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=900&q=80" alt="Обезьяна — Багира" class="instructor-card__image" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80'">
+                            <span class="instructor-card__experience">Стаж: 12 лет</span>
+                        </div>
+                        <div class="instructor-card__info">
+                            <h3 class="instructor-card__name">Багира</h3>
+                            <span class="instructor-card__role">Старший инструктор (МКПП / АКПП)</span>
+                            <p class="instructor-card__desc">Идеально чувствует ритм движения и помогает ученикам справляться со стрессом на дороге и на автодроме.</p>
+                            <div class="instructor-card__rating">
+                                <i class="fa-solid fa-star"></i> <span>4.95 / 5.0 (140+ учеников)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="instructor-card">
+                        <div class="instructor-card__image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=900&q=80" alt="Обезьяна — Миша" class="instructor-card__image" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80'">
+                            <span class="instructor-card__experience">Стаж: 8 лет</span>
+                        </div>
+                        <div class="instructor-card__info">
+                            <h3 class="instructor-card__name">Миша</h3>
+                            <span class="instructor-card__role">Инструктор (АКПП)</span>
+                            <p class="instructor-card__desc">Отлично объясняет технику движения и учит держать спокойствие даже в плотном городском потоке.</p>
+                            <div class="instructor-card__rating">
+                                <i class="fa-solid fa-star"></i> <span>4.98 / 5.0 (110+ учеников)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="instructor-card">
+                        <div class="instructor-card__image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=900&q=80" alt="Обезьяна — Рома" class="instructor-card__image" onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80'">
+                            <span class="instructor-card__experience">Стаж: 15 лет</span>
+                        </div>
+                        <div class="instructor-card__info">
+                            <h3 class="instructor-card__name">Рома</h3>
+                            <span class="instructor-card__role">Инструктор (МКПП)</span>
+                            <p class="instructor-card__desc">Эксперт по маневрированию, парковке и уверенной работе с машиной в любых дорожных условиях.</p>
+                            <div class="instructor-card__rating">
+                                <i class="fa-solid fa-star"></i> <span>4.92 / 5.0 (180+ учеников)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ТАРИФЫ -->
+        <section class="pricing section" id="pricing">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Прайс-лист DriveSchool.kz</span>
+                    <h2 class="section-title">Тарифы обучения</h2>
+                    <p class="section-description">Выбирайте удобный формат теоретических и практических занятий</p>
+                </div>
+
+                <div class="pricing__grid">
+                    <!-- Онлайн занятия -->
+                    <div class="price-card">
+                        <div class="price-card__header">
+                            <h3 class="price-card__title">Онлайн занятия</h3>
+                            <div class="price-card__amount">от 59 000 ₸</div>
+                            <span class="price-card__sub">Изучение теории ПДД в любое удобное время</span>
+                        </div>
+                        <ul class="price-card__list">
+                            <li><i class="fa-solid fa-check"></i> Доступ к онлайн-платформе и приложению</li>
+                            <li><i class="fa-solid fa-check"></i> Видеоуроки, тесты и экзаменационные билеты</li>
+                            <li><i class="fa-solid fa-check"></i> Консультации с преподавателем онлайн</li>
+                            <li><i class="fa-solid fa-check"></i> Подготовка полного пакета документов</li>
+                        </ul>
+                        <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20записаться%20на%20онлайн%20занятия" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Записаться в WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Оффлайн занятия -->
+                    <div class="price-card price-card--popular">
+                        <div class="popular-badge">Популярный выбор</div>
+                        <div class="price-card__header">
+                            <h3 class="price-card__title">Оффлайн занятия</h3>
+                            <div class="price-card__amount">от 84 000 ₸</div>
+                            <span class="price-card__sub">Очные уроки с преподавателем в классе</span>
+                        </div>
+                        <ul class="price-card__list">
+                            <li><i class="fa-solid fa-check"></i> Занятия в оборудованных учебных классах</li>
+                            <li><i class="fa-solid fa-check"></i> Живое общение и подробный разбор ПДД</li>
+                            <li><i class="fa-solid fa-check"></i> Симуляция экзаменационных тестов ЦОН</li>
+                            <li><i class="fa-solid fa-check"></i> Сопровождение и регистрация в базе</li>
+                        </ul>
+                        <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20записаться%20на%20оффлайн%20занятия" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Записаться в WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Практика -->
+                    <div class="price-card">
+                        <div class="price-card__header">
+                            <h3 class="price-card__title">Практика вождения</h3>
+                            <div class="price-card__amount">5 000 ₸ <span class="price-unit">/ 1 акад. час</span></div>
+                            <span class="price-card__sub">Или <strong>10 000 ₸</strong> за 90 минут полноценного занятия</span>
+                        </div>
+                        <ul class="price-card__list">
+                            <li><i class="fa-solid fa-check"></i> Индивидуальные уроки с инструктором</li>
+                            <li><i class="fa-solid fa-check"></i> Выбор АКПП (автомат) или МКПП (механика)</li>
+                            <li><i class="fa-solid fa-check"></i> Отработка автодрома и городских маршрутов ЦОН</li>
+                            <li><i class="fa-solid fa-check"></i> Топливо и бензин включены в стоимость</li>
+                        </ul>
+                        <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20записаться%20на%20практику%20вождения" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Записаться в WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ОТЗЫВЫ И 2ГИС -->
+        <section class="reviews section bg-light" id="reviews">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Честные оценки</span>
+                    <h2 class="section-title">Отзывы наших учеников</h2>
+                    <p class="section-description">Мы гордимся доверием наших выпускников. Ознакомьтесь с реальным рейтингом и отзывами в 2ГИС.</p>
+                </div>
+
+                <!-- ВИДЖЕТ 2ГИС -->
+                <div id="2gis-widget-container" class="gis-widget-wrapper">
+                    <div class="gis-card">
+                        <div class="gis-card__info">
+                            <div class="gis-card__badge-tag"><i class="fa-solid fa-location-dot"></i> 2ГИС Оценка</div>
+                            <h3 class="gis-card__title">DriveSchool.kz в 2ГИС</h3>
+                            <p class="gis-card__sub">Официальный рейтинговый виджет организации</p>
+                        </div>
+                        <div class="gis-card__widget-box">
+                            <iframe frameborder="0" width="150px" height="50px" src="https://widget.2gis.ru/api/widget?org_id=70000001116301566&amp;branch_id=70000001116301567&amp;size=medium&amp;theme=dark" style="border: 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ПОДВАЛ (FOOTER) -->
+    <footer class="footer" id="contacts">
+        <div class="container footer__container">
+            <div class="footer__brand">
+                <a href="#hero" class="logo logo--footer">
+                    <img src="logo.png" alt="DriveSchool.kz Логотип" class="logo__img logo__img--footer">
+                    <span class="logo__text">DriveSchool<span class="logo__accent">.kz</span></span>
+                </a>
+                <p class="footer__desc">Современная автошкола в Казахстане. Обучаем уверенному и безопасному вождению с гарантией результата.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/driveschool.kz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-link social-link--insta" title="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/77774414888" class="social-link social-link--wa" title="WhatsApp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer__contacts">
+                <h3 class="footer__title">Контакты</h3>
+                <ul class="contacts-list">
+                    <li><i class="fa-solid fa-location-dot"></i><span>Улица Айнакол 155</span></li>
+                    <li><i class="fa-solid fa-phone"></i><a href="tel:+77774414888">+7 (777) 441-48-88</a></li>
+                    <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/77774414888" target="_blank" rel="noopener">+7 (777) 441-48-88 (WhatsApp)</a></li>
+                    <li><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/driveschool.kz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">@driveschool.kz (Instagram)</a></li>
+                    <li><i class="fa-solid fa-clock"></i><span>Пн - Пт: 09:00 - 18:00 (Сб - Вс: выходной)</span></li>
+                </ul>
+            </div>
+
+            <div class="footer__links">
+                <h3 class="footer__title">Навигация</h3>
+                <ul>
+                    <li><a href="#hero">Главная</a></li>
+                    <li><a href="#fleet">Автопарк</a></li>
+                    <li><a href="#instructors">Инструкторы</a></li>
+                    <li><a href="#pricing">Тарифы</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <div class="container footer__bottom-container">
+                <p>&copy; 2026 DriveSchool.kz. Все права защищены.</p>
+                <a href="#" class="privacy-link">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================================================== -->
+    <!-- ЕДИНЫЙ СКРИПТ (JAVASCRIPT)                                                 -->
+    <!-- ========================================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Мобильное меню
+            const burgerToggle = document.getElementById('burger-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav__link');
+
+            if (burgerToggle && navMenu) {
+                burgerToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    burgerToggle.classList.toggle('active');
+                });
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        burgerToggle.classList.remove('active');
+                    });
+                });
+            }
+
+            // 2. Фильтр автопарка (АКПП / МКПП)
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const carCards = document.querySelectorAll('.car-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+                    carCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
